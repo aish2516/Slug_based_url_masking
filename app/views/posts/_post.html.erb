@@ -1,0 +1,19 @@
+<div id="post_<%= post.id %>" class="bg-white p-4 rounded shadow">
+  <h2 class="text-xl font-bold"><%= link_to post.title, post_path(post) %></h2>
+  <p class="text-gray-500 text-sm">Tag: <%= post.tag %> | Published on: <%= post.published_on %></p>
+  <p class="mt-2"><%= truncate(post.content, length: 100) %></p>
+  <p>Posted by: <%= post.user.email %></p>
+
+  <% if user_signed_in? && post.user == current_user %>
+    <div class="flex gap-4 mt-3">
+      <%= link_to "Edit", edit_post_path(post), data: { turbo_frame: "modal" }, class: "text-blue-600" %>
+      <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-600" %>
+    </div>
+  <% end %>
+</div>
+<% if defined?(user_signed_in?) && user_signed_in? %>
+  <p>Welcome, <%= current_user.email %>!</p>
+<% end %>
+
+
+

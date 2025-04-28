@@ -1,0 +1,12 @@
+<h1 class="text-2xl font-bold mb-4">Blog Posts</h1>
+
+<%= link_to "New Post", new_post_path, data: { turbo_frame: "modal" }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+
+<div id="posts" class="mt-4 space-y-4">
+  <%= render @posts %>
+</div>
+
+<div id="react-post-list"></div>
+
+
+<%= turbo_frame_tag "modal" %>

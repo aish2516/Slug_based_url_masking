@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "modal" do %>
+  <h2 class="text-xl font-bold mb-4"><%= @post.new_record? ? "New Post" : "Edit Post" %></h2>
+  <%= render "form", post: @post %>
+<% end %>
